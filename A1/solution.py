@@ -27,22 +27,26 @@ def heur_manhattan_distance(state):
     '''admissible sokoban heuristic: manhattan distance'''
     '''INPUT: a sokoban state'''
     '''OUTPUT: a numeric value that serves as an estimate of the distance of the state to the goal.'''      
-    #We want an admissible heuristic, which is an optimistic heuristic. 
-    #It must always underestimate the cost to get from the current state to the goal.
-    #The sum Manhattan distance of the boxes to their closest storage spaces is such a heuristic.  
-    #When calculating distances, assume there are no obstacles on the grid and that several boxes can fit in one storage bin.
-    #You should implement this heuristic function exactly, even if it is tempting to improve it.
-    #Your function should return a numeric value; this is the estimate of the distance to the goal.
+    #Admissible heuristic <=> optimistic heuristic. 
+    #Sum Mandhattan Distance - always underestimates cost to get from current state -> goal.
+
+    # Distance Calculation Assumptions:
+    #   - no obstacles on grid 
+    #   - several boxes can fit in one storage bin
+    #Implement this heuristic exactly, even if it is tempting to improve it.
+    
+    #Return a numeric value - estimate of distance to goal
     return 0
 
 def heur_alternate(state):
 #IMPLEMENT
     '''a better sokoban heuristic'''
     '''INPUT: a sokoban state'''
-    '''OUTPUT: a numeric value that serves as an estimate of the distance of the state to the goal.'''        
-    #heur_manhattan_distance has flaws.   
-    #Write a heuristic function that improves upon heur_manhattan_distance to estimate distance between the current state and the goal.
-    #Your function should return a numeric value for the estimate of the distance to the goal.
+    '''OUTPUT: a numeric value that serves as an estimate of the distance of the state to the goal.'''         
+    #- improves upon heur_manhattan_distance 
+    #     to estimate distance between current and goal states
+    
+    #Your function should return a numeric value - estimate of distance to goal
     return 0
 
 def fval_function(sN, weight):
@@ -56,12 +60,15 @@ def fval_function(sN, weight):
     @rtype: float
     """
   
-    #Many searches will explore nodes (or states) that are ordered by their f-value.
-    #For UCS, the fvalue is the same as the gval of the state. For best-first search, the fvalue is the hval of the state.
-    #You can use this function to create an alternate f-value for states; this must be a function of the state and the weight.
-    #The function must return a numeric f-value.
-    #The value will determine your state's position on the Frontier list during a 'custom' search.
-    #You must initialize your search engine object as a 'custom' search engine if you supply a custom fval function.
+    # Many searches explore nodes/states ordered by node f-value
+    #   For UCS, fvalue = gval of the state. 
+    #   For best-first search, fvalue = hval of the state.
+    # Use this function to create alternate f-value for states; 
+    #               *must be a function of the state and the weight.
+    
+    #Returns numeric f-value - determines state's position on Frontier list in 'custom' search
+    
+    #Must initialize search engine object as 'custom' if you supply a custom fval function.
     return 0
 
 def anytime_gbfs(initial_state, heur_fn, timebound = 10):
